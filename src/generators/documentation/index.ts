@@ -1,0 +1,1 @@
+export { DocumentationGenerator } from './documentationGenerator';
