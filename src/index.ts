@@ -7,6 +7,7 @@ import chalk from 'chalk';
 import inquirer from 'inquirer';
 
 import { PlanGenerator } from './generators/plans/planGenerator';
+import { ExtensionGenerator } from './generators/extension';
 import { CLIInterface } from './utils/cliUI';
 import { checkForUpdates } from './utils/versionChecker';
 import { createTranslator, detectLocale, SUPPORTED_LOCALES, normalizeLocale } from './utils/i18n';
@@ -180,6 +181,42 @@ program
     } catch (error) {
       ui.updateSpinner(t('spinner.plan.creationFailed'), 'fail');
       ui.displayError(t('errors.plan.creationFailed'), error as Error);
+      process.exit(1);
+    } finally {
+      ui.stopSpinner();
+    }
+  });
+
+program
+  .command('extension')
+  .description(t('commands.extension.description'))
+  .option('-o, --output <dir>', t('commands.extension.options.output'), './.context')
+  .option('--name <name>', t('commands.extension.options.name'))
+  .option('--description <text>', t('commands.extension.options.description'))
+  .option('-v, --verbose', t('commands.extension.options.verbose'))
+  .action(async (options: any) => {
+    const outputDir = path.resolve(options.output || './.context');
+    const generator = new ExtensionGenerator();
+
+    ui.startSpinner(t('spinner.extension.creating'));
+
+    try {
+      const count = await generator.generateExtension(
+        outputDir,
+        {
+          extensionName: options.name,
+          extensionDescription: options.description
+        },
+        Boolean(options.verbose)
+      );
+
+      ui.updateSpinner(t('spinner.extension.created', { count }), 'success');
+      ui.displaySuccess(
+        t('success.extension.ready', { path: chalk.cyan(path.join(outputDir, 'extension')) })
+      );
+    } catch (error) {
+      ui.updateSpinner(t('errors.extension.scaffoldFailed'), 'fail');
+      ui.displayError(t('errors.extension.scaffoldFailed'), error as Error);
       process.exit(1);
     } finally {
       ui.stopSpinner();
