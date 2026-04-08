@@ -52,7 +52,7 @@ async function exportMeta() {
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
   a.href     = url;
-  a.download = 'bookmarksoFar-export.json';
+  a.download = 'bookmarkSoFar-export.json';
   a.click();
   URL.revokeObjectURL(url);
 }

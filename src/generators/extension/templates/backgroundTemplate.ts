@@ -31,7 +31,7 @@ chrome.contextMenus?.onClicked.addListener(async (info, tab) => {
 
     let category = 'Uncategorised';
     try {
-      const aiCategory = await categorieSingle(url, title);
+      const aiCategory = await categoriseSingle(url, title);
       if (aiCategory) category = aiCategory;
     } catch { /* AI unavailable — proceed without category */ }
 
@@ -51,7 +51,7 @@ chrome.contextMenus?.onClicked.addListener(async (info, tab) => {
 // Categorisation in the background worker is done via message passing to
 // the popup, which has access to window.ai. This stub shows the pattern.
 
-async function categorieSingle(url, title) {
+async function categoriseSingle(url, title) {
   // Attempt to use the Prompt API if available in the SW context (future Chrome versions)
   if (typeof self.ai !== 'undefined' && self.ai.languageModel) {
     try {
