@@ -1,0 +1,9 @@
+export { renderManifest } from './manifestTemplate';
+export { renderPopupHtml } from './popupHtmlTemplate';
+export { renderPopupCss } from './popupCssTemplate';
+export { renderPopupJs } from './popupJsTemplate';
+export { renderBackground } from './backgroundTemplate';
+export { renderContentScript } from './contentTemplate';
+export { renderOptionsHtml } from './optionsHtmlTemplate';
+export { renderOptionsJs } from './optionsJsTemplate';
+export { renderExtensionReadme } from './readmeTemplate';

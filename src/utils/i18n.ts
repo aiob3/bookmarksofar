@@ -160,7 +160,16 @@ const englishMessages = {
   'errors.fill.apiKeyMissing': '{provider} API key is required. Set one of {envVars} or use --api-key.',
   'info.interactive.returning.title': 'Main menu',
   'info.interactive.returning.detail': 'Returning to the interactive menu. Pick another action or choose Exit.',
-  'success.interactive.goodbye': 'Goodbye! Thanks for using ai-context.'
+  'success.interactive.goodbye': 'Goodbye! Thanks for using ai-context.',
+  'commands.extension.description': 'Scaffold a Chrome Extension for bookmark management with Gemini Nano',
+  'commands.extension.options.output': 'Output directory for the generated extension',
+  'commands.extension.options.name': 'Extension display name',
+  'commands.extension.options.description': 'Short description for the extension manifest',
+  'commands.extension.options.verbose': 'Enable verbose logging',
+  'errors.extension.scaffoldFailed': 'Failed to scaffold Chrome Extension',
+  'spinner.extension.creating': 'Creating Chrome Extension scaffold...',
+  'spinner.extension.created': 'Chrome Extension scaffold created ({count} files)',
+  'success.extension.ready': 'Chrome Extension scaffold ready in {path}'
 } as const;
 
 export type TranslationKey = keyof typeof englishMessages;
@@ -324,7 +333,16 @@ const portugueseMessages: TranslationDictionary = {
   'errors.fill.apiKeyMissing': 'É necessária uma chave de API {provider}. Defina uma das variáveis {envVars} ou use --api-key.',
   'info.interactive.returning.title': 'Menu principal',
   'info.interactive.returning.detail': 'Voltando ao menu interativo. Escolha outra ação ou selecione Sair.',
-  'success.interactive.goodbye': 'Até logo! Obrigado por usar o ai-context.'
+  'success.interactive.goodbye': 'Até logo! Obrigado por usar o ai-context.',
+  'commands.extension.description': 'Gerar scaffold de uma Extensão Chrome para gerenciamento de bookmarks com Gemini Nano',
+  'commands.extension.options.output': 'Diretório de saída para a extensão gerada',
+  'commands.extension.options.name': 'Nome de exibição da extensão',
+  'commands.extension.options.description': 'Descrição curta para o manifesto da extensão',
+  'commands.extension.options.verbose': 'Ativa logs detalhados',
+  'errors.extension.scaffoldFailed': 'Falha ao gerar scaffold da Extensão Chrome',
+  'spinner.extension.creating': 'Criando scaffold da Extensão Chrome...',
+  'spinner.extension.created': 'Scaffold da Extensão Chrome criado ({count} arquivos)',
+  'success.extension.ready': 'Scaffold da Extensão Chrome pronto em {path}'
 };
 
 const dictionaries: Record<Locale, TranslationDictionary> = {
